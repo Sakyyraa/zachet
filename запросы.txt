@@ -1,0 +1,19 @@
+SELECT COUNT(*) AS total_users FROM Users;
+SELECT COUNT(DISTINCT email) AS unique_emails FROM Users;
+SELECT MIN(id) AS min_user_id, username, email FROM Users;
+SELECT MAX(id) AS max_user_id, username, email FROM Users;
+SELECT AVG(LENGTH(username)) AS avg_username_length FROM Users;
+
+SELECT COUNT(*) AS total_projects FROM Проекты;
+SELECT AVG(project_count) AS avg_projects_per_user
+FROM (
+    SELECT user_id, COUNT(*) AS project_count
+    FROM Проекты
+    GROUP BY user_id
+) AS user_projects;
+SELECT MIN(id) AS min_project_id, название, описание FROM Проекты;
+SELECT MAX(id) AS max_project_id, название, описание FROM Проекты;
+SELECT статус, COUNT(*) AS project_count
+FROM Проекты
+GROUP BY статус;
+
